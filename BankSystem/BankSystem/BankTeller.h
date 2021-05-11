@@ -7,6 +7,12 @@ public:
     void respondFlirt();
 
 private:
+    // ask for user new account name
+    string askNewAccountName(const Bank &bank);
+
+    // account page where user successfully logs in
+    void runAccountPage(Bank &bank);
+
     enum EBankServiceOption {
         Opt_OpenAccount = 1,
         Opt_login,

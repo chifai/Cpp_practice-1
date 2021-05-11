@@ -111,9 +111,9 @@ Account Bank::OpenAccount(string firstName, string lastName, string accName, str
     return account;
 }
 
-bool Bank::checkAccDuplicate(string accName) {
+bool Bank::checkAccDuplicate(string accName) const {
 
-    map<int, Account>::iterator itr;
+    map<int, Account>::const_iterator itr;
     Account currentAccount;
     for (itr = accounts.begin(); itr != accounts.end(); itr++) {
         currentAccount = itr->second;
@@ -142,10 +142,10 @@ bool Bank::login(string accName, string password)
 }
 
 // assign balance to argument, return false if not logged in
-bool Bank::BalanceCheck(float &balance) {
+bool Bank::BalanceCheck(float &balance) const {
     if (loginAccNumber == INVALID_LOGINACCNUM ) return false;
 
-    map<int, Account>::iterator itr = accounts.find(loginAccNumber);
+    map<int, Account>::const_iterator itr = accounts.find(loginAccNumber);
     balance = itr->second.getBalance();
 
     return true;

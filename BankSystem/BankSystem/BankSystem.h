@@ -31,10 +31,11 @@ public:
     string getAccName() {
         return accName;
     }
-    float getBalance() {
+    float getBalance() const {
         return balance;
     }
 
+    // --- Member functions ---
     // return true if the accname and password are matched
     bool checkAccNameAndPassword(string accName, string password) {
         if (this->accName.compare(accName) != 0) return false;
@@ -43,7 +44,6 @@ public:
         return true;
     }
 
-    // Member functions
     void Deposit(float amount);
     void Withdraw(float amount);
     static void setLastAccountNumber(int accNumber);
@@ -71,16 +71,16 @@ public:
     // --- Member functions ---
 
     // open account
-    Account OpenAccount(string firstName, string lastName, string accName, string password, float balance);
+    Account OpenAccount(const string firstName, string lastName, string accName, string password, float balance);
 
     // check if accName already exits when opening an account
-    bool checkAccDuplicate(string accName);
+    bool checkAccDuplicate(string accName) const;
 
     // login account by accName and password, return true if successful
     bool login(string accName, string password);
 
     // assign balance to argument, return false if not logged in
-    bool BalanceCheck(float &balance);
+    bool BalanceCheck(float &balance) const;
 
     // deposit amount to account, return false if not logged in
     bool Deposit(float amount);
